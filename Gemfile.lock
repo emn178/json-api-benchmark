@@ -44,6 +44,11 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_model_serializers (0.10.15)
+      actionpack (>= 4.1)
+      activemodel (>= 4.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (8.0.1)
       activesupport (= 8.0.1)
       globalid (>= 0.3.6)
@@ -79,12 +84,13 @@ GEM
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
-    bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (7.0.0)
       racc
     builder (3.3.0)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crass (1.0.6)
@@ -92,23 +98,24 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    domain_name (0.6.20240107)
     dotenv (3.1.7)
     drb (2.2.1)
     ed25519 (1.3.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    ffaker (2.24.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.8)
+      domain_name (~> 0.5)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.1.0)
-      actionpack (>= 6.0.0)
-      activesupport (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.8.0)
     irb (1.15.1)
       pp (>= 0.6.0)
@@ -118,6 +125,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.10.1)
+    jsonapi-renderer (0.2.2)
     kamal (2.5.3)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -141,6 +149,10 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2025.0304)
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.8.0)
@@ -158,6 +170,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     net-ssh (7.3.0)
+    netrc (0.11.0)
     nio4r (2.7.4)
     nokogiri (1.18.3-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -175,20 +188,19 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
+    oj (3.16.10)
+      bigdecimal (>= 3.0)
+      ostruct (>= 0.2)
+    oj_serializers (2.0.3)
+      oj (>= 3.14.0)
     ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
-    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    propshaft (1.1.0)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
-      railties (>= 7.0.0)
     psych (5.2.3)
       date
       stringio
@@ -240,6 +252,11 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rubocop (1.73.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -285,6 +302,14 @@ GEM
       fugit (~> 1.11.0)
       railties (>= 7.1)
       thor (~> 1.3.1)
+    sqlite3 (2.6.0-aarch64-linux-gnu)
+    sqlite3 (2.6.0-aarch64-linux-musl)
+    sqlite3 (2.6.0-arm-linux-gnu)
+    sqlite3 (2.6.0-arm-linux-musl)
+    sqlite3 (2.6.0-arm64-darwin)
+    sqlite3 (2.6.0-x86_64-darwin)
+    sqlite3 (2.6.0-x86_64-linux-gnu)
+    sqlite3 (2.6.0-x86_64-linux-musl)
     sshkit (1.24.0)
       base64
       logger
@@ -292,8 +317,6 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
-    stimulus-rails (1.3.4)
-      railties (>= 6.0.0)
     stringio (3.1.5)
     thor (1.3.2)
     thruster (0.1.11)
@@ -302,9 +325,6 @@ GEM
     thruster (0.1.11-x86_64-darwin)
     thruster (0.1.11-x86_64-linux)
     timeout (0.4.3)
-    turbo-rails (2.0.13)
-      actionpack (>= 7.1.0)
-      railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.1.4)
@@ -312,11 +332,6 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
-    web-console (4.2.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -336,25 +351,24 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  active_model_serializers
   bootsnap
   brakeman
   debug
-  importmap-rails
+  ffaker
   jbuilder
   kamal
-  pg (~> 1.1)
-  propshaft
+  oj_serializers
   puma (>= 5.0)
   rails (~> 8.0.1)
+  rest-client
   rubocop-rails-omakase
   solid_cable
   solid_cache
   solid_queue
-  stimulus-rails
+  sqlite3 (>= 2.1)
   thruster
-  turbo-rails
   tzinfo-data
-  web-console
 
 BUNDLED WITH
    2.5.22

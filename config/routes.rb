@@ -11,4 +11,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :items, only: [:index] do
+    collection do
+      get :jbuilder, defaults: { format: :json }
+      get :ams
+      get :oj
+      get :oj_to_json
+    end
+  end
 end

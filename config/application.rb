@@ -18,7 +18,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module JsonApiTest
+module JsonApiBenchmark
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -38,5 +38,7 @@ module JsonApiTest
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.api_only = true
   end
 end
