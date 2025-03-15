@@ -18,9 +18,9 @@ rake benchmark
 Reulst
 ```
                               user     system      total        real
-as_json                   0.033443   0.020734   0.054177 (  2.736546)
-jbuilder                  0.012827   0.014554   0.027381 (  2.482353)
-active_model_serializers  0.025701   0.016709   0.042410 (  6.097047)
-oj_serializer             0.024274   0.016308   0.040582 (  2.097655)
-oj_serializer.to_json     0.014733   0.015261   0.029994 (  1.678899)
+as_json                   0.071340   0.051344   0.122684 (  9.146057)
+jbuilder                  0.064440   0.052427   0.116867 (  8.548916)
+active_model_serializers  0.052733   0.052273   0.105006 ( 18.628907)
+oj_serializer             0.052506   0.050255   0.102761 (  6.791288)
+oj_serializer.to_json     0.049903   0.050663   0.100566 (  5.339947)
 ```

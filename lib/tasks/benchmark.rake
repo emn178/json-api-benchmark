@@ -1,7 +1,7 @@
 require 'benchmark'
 
 task :benchmark do
-  n = 10
+  n = 30
   Benchmark.bm do |x|
     x.report('as_json') do
       n.times { RestClient.get('http://localhost:3000/items') }

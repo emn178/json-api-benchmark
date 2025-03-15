@@ -4,11 +4,11 @@ class ItemsController < ApplicationController
   end
 
   def jbuilder
-    @items = Item.all.as_json
+    @items = Item.all
   end
 
   def ams
-    render json: Item.all, each_serializer: ItemSerializer, root: 'items'
+    render json: Item.all, each_serializer: ItemSerializer, root: "items"
   end
 
   def oj
