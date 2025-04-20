@@ -46,7 +46,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-gem 'ffaker'
-gem 'rest-client'
-gem 'active_model_serializers'
-gem 'oj_serializers'
+gem "ffaker"
+gem "rest-client"
+gem "active_model_serializers"
+gem "oj_serializers"
+gem "benchmark-ips"

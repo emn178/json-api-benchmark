@@ -18,7 +18,7 @@ if size_to_add > 0
       name: FFaker::Product.product_name,
       price: rand(1000..10000),
       description: FFaker::Lorem.paragraph,
-      enabled: [true, false].sample
+      enabled: [ true, false ].sample
     )
   end
 end
